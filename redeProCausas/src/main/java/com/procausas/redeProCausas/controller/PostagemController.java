@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.procausas.redeProCausas.model.Postagem;
 import com.procausas.redeProCausas.repository.PostagemRepository;
+import com.procausas.redeProCausas.service.PostagemService;
 
 @RestController
 @RequestMapping("/postagem")
@@ -26,6 +27,9 @@ public class PostagemController {
 	@Autowired
 	private PostagemRepository repository;
 	
+	@Autowired
+	private PostagemService service;
+	
 	@GetMapping
 	public ResponseEntity<List<Postagem>> GetAll(){
 		return ResponseEntity.ok(repository.findAll());
@@ -34,6 +38,11 @@ public class PostagemController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Postagem> GetById(@PathVariable long id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+	}
+	
+	@GetMapping("/listapost/{id}")
+	public ResponseEntity<List<Postagem>> getListaPostagem(@PathVariable long id){
+		return ResponseEntity.status(HttpStatus.OK).body(service.minhasPostagem(id));
 	}
 	
 	@PostMapping

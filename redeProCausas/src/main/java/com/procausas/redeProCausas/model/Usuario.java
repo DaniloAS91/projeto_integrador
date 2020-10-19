@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +32,7 @@ public class Usuario {
 	@NotNull
 	@Size(min = 10, max = 50)
 	@Email
+	@Column(unique = true)
 	private String usuarioEmail;
 	
 	@NotNull
@@ -41,6 +43,7 @@ public class Usuario {
 	private Date usuarioNascimento;
 	
 	@NotNull
+	@Column(unique = true)
 	@Size(min = 5, max = 14)
 	private String usuarioDocumento;
 	

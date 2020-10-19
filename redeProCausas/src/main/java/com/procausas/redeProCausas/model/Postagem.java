@@ -40,6 +40,9 @@ public class Postagem {
 	@NotNull
 	private String postEndereco;
 	
+	@NotNull
+	private String postBairro;
+	
 	private String postTag;
 	
 	private String postUrl;
@@ -104,6 +107,14 @@ public class Postagem {
 
 	public void setPostEndereco(String postEndereco) {
 		this.postEndereco = postEndereco;
+	}
+	
+	public String getPostBairro() {
+		return postBairro;
+	}
+
+	public void setPostBairro(String postBairro) {
+		this.postBairro = postBairro;
 	}
 
 	public String getPostTag() {
